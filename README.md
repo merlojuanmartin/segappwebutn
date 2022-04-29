@@ -2,7 +2,14 @@
 
 # Pruebas con wordpress 4.7 en docker
 ```
-1. Expone wp-admin en la pagina
-2. Al probar un usuario válid con un pass erroneo manda otro mensaje de error
-3. Fuerza bruta para sacar el password. Poner usuario y pass cortos para el lab. Usamos burp para interceptar.
+Expone wp-admin en la pagina. No hay límite de bloqueo para 
+ingreo erróneo de password. Al probar un usuario válido con 
+un pass erroneo manda otro mensaje de error. Por lo que al 
+probar con uno conocido, como admin, encontramos este 
+mensaje que llama la antención. Fuerza bruta para hallar el 
+password. Poner usuario y pass cortos para el lab. Usamos 
+burp para interceptar.
 ```
+
+## Opciones
+Robamos mails de usuarios y hacemos fishing
