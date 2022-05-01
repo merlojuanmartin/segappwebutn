@@ -1,5 +1,15 @@
 # TP Seguridad Apps Web - UTN
 
+# Para levantar los docker
+```
+# Lenvar los docker
+sudo docker-compose up -d
+
+# Instalar paquetes necesarios para hackear en www-data
+sudo docker exec -it segappwebutn_wordpress_1 /bin/bash
+apt install -y net-tools nmap
+``` 
+
 # Pruebas con wordpress 4.7 en docker
 ```
 Expone wp-admin en la pagina. No hay límite de bloqueo para 
@@ -29,4 +39,6 @@ Permitir modificar los archivos de los theme desde la web, podemos levantar un r
 En ruta: http://localhost:8000/wp-content/themes/twentyfifteen/404.php
 https://www.revshells.com/
 https://www.wpbeginner.com/wp-tutorials/how-to-disable-theme-and-plugin-editors-from-wordpress-admin-panel/
+
+4. Nmap / ARP
 
