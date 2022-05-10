@@ -1,44 +1,72 @@
 # TP Seguridad Apps Web - UTN
 
-# Para levantar los docker
+# Pasos a seguir para realizar las pruebas
+## Para levantar los docker
 ```
-# Lenvar los docker
 sudo docker-compose up -d
-
-# Instalar paquetes necesarios para hackear en www-data
-sudo docker exec -it segappwebutn_wordpress_1 /bin/bash
-apt install -y net-tools nmap
-``` 
-
-# Pruebas con wordpress 4.7 en docker
 ```
-Expone wp-admin en la pagina. No hay límite de bloqueo para 
-ingreo erróneo de password. Al probar un usuario válido con 
-un pass erroneo manda otro mensaje de error. Por lo que al 
-probar con uno conocido, como admin, encontramos este 
-mensaje que llama la antención. Fuerza bruta para hallar el 
-password. Poner usuario y pass cortos para el lab. Usamos 
-burp para interceptar.
+## Ingresar a la página
+http://secappweb.utn.edu.ar/
+
+## Hacer ataque de scaneo del sitio
 ```
+dirb http://secappweb.utn.edu.ar
+```
+## Verificamos el Output
+```
+-----------------
+DIRB v2.22    
+By The Dark Raver
+-----------------
 
-## Opciones
-Robamos mails de usuarios y hacemos fishing
+START_TIME: Tue May 10 13:38:20 2022
+URL_BASE: http://secappweb.utn.edu.ar/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
 
-# Orden vulnerabilidades
-1. A04:2021 – Insecure Design
-https://owasp.org/Top10/A04_2021-Insecure_Design/
-Expone en página principal el panel de wp-admin para autenticarse
+-----------------
 
-2. A07:2021 – Identification and Authentication Failures
-https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/
-Permite fuerza bruta, usuario admin (weak o default)
+GENERATED WORDS: 4612                                                          
 
-3. A05:2021 – Security Misconfiguration 
-https://owasp.org/Top10/A05_2021-Security_Misconfiguration/
-Permitir modificar los archivos de los theme desde la web, podemos levantar un reverse shell.
-En ruta: http://localhost:8000/wp-content/themes/twentyfifteen/404.php
-https://www.revshells.com/
-https://www.wpbeginner.com/wp-tutorials/how-to-disable-theme-and-plugin-editors-from-wordpress-admin-panel/
+---- Scanning URL: http://secappweb.utn.edu.ar/ ----
++ http://secappweb.utn.edu.ar/index.php (CODE:301|SIZE:0)                      
++ http://secappweb.utn.edu.ar/server-status (CODE:403|SIZE:308)                
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/                           
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-content/                         
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-includes/                        
++ http://secappweb.utn.edu.ar/xmlrpc.php (CODE:405|SIZE:42)   
+  
+---- Entering directory: http://secappweb.utn.edu.ar/wp-admin/ ----
++ http://secappweb.utn.edu.ar/wp-admin/admin.php (CODE:302|SIZE:0)             
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/css/                       
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/images/                    
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/includes/                  
++ http://secappweb.utn.edu.ar/wp-admin/index.php (CODE:302|SIZE:0)             
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/js/                        
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/maint/                     
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/network/                   
+==> DIRECTORY: http://secappweb.utn.edu.ar/wp-admin/user/     
 
-4. Nmap / ARP
+------------------
+- OUTPUT OMITTED -
+------------------
+```
+Con esta información encontramos que existe un /wp-admin/admin.php y dió como respuesta
+con código 302 Found, por lo que chequeamos la página desde el sitio
+http://secappweb.utn.edu.ar/wp-admin/index.php
+
+## Chequeamos usuario y password y nos damos cuenta que no hay un bloqueo
+por cantidad de intentos.
+
+## Hacemos fuerza bruta (DESARROLLAR)
+
+## Ingreso de inyección (DESARROLLAR)
+
+## Reverse shell (DESARROLLAR)
+
+## Configuración mysql con md5 (DESARROLLAR)
+
+## Ingreso a base de datos remota (DESARROLLAR)
+
+
+
 
