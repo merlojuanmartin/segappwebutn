@@ -1,0 +1,8 @@
+admin
+administrador
+administrator
+adm
+manager
+management
+wp-admin
+./wp-login.php
