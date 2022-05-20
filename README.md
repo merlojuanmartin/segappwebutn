@@ -3,7 +3,11 @@
 # Pasos a seguir para realizar las pruebas
 ## Para levantar los docker
 ```
-docker-compose up -d
+# Descomprimir base de datos
+tar -xvf db_data.tar.gz
+
+# Levantar docker
+sudo docker-compose up -d
 ```
 ## Ingresar a la página
 http://localhost:8000
