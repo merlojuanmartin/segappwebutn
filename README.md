@@ -3,16 +3,16 @@
 # Pasos a seguir para realizar las pruebas
 ## Para levantar los docker
 ```
-sudo docker-compose up -d
+docker-compose up -d
 ```
 ## Ingresar a la página
-http://secappweb.utn.edu.ar/
+http://localhost:8000
 
 ## Hacer ataque de scaneo del sitio
 ```
-dirb http://secappweb.utn.edu.ar
+dirb http://localhost:8000
 ```
-## Verificamos el Output
+## Verificamos el Output (MODIFICAR)
 ```
 -----------------
 DIRB v2.22    
