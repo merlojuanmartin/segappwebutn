@@ -18,7 +18,8 @@ services:
     build: .
     volumes:
       - ./wordpress_data:/var/www/html
-      - ./mysql.conf:/var/www/mysql.conf:ro
+      - ./mysql.conf:/var/www/html/mysql.conf:ro
+      - ./php.ini:/usr/local/etc/php/conf.d/php.ini:ro
     ports:
       - "8000:80"
     restart: always
