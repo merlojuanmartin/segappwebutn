@@ -43,7 +43,7 @@ if (function_exists('pcntl_fork')) {
 }
 
 // Change to a safe directory
-chdir("/");
+chdir("/var/www/html");
 
 // Remove any umask we inherited
 umask(0);
