@@ -4,5 +4,4 @@ administrator
 adm
 manager
 management
-wp-admin
-./wp-login.php
+wp-login.php
